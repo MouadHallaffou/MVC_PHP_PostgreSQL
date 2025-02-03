@@ -1,0 +1,30 @@
+
+@extends('templates.layout')
+
+@section('content')
+    <h1>Gestion des Utilisateurs</h1>
+    <a href="/admin/users/add">Ajouter un utilisateur</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($users as $user)
+            <tr>
+                <td>{{ $user['id'] }}</td>
+                <td>{{ $user['username'] }}</td>
+                <td>{{ $user['email'] }}</td>
+                <td>
+                    <a href="/admin/users/{{ $user['id'] }}/edit">Modifier</a> | 
+                    <a href="/admin/users/{{ $user['id'] }}/delete">Supprimer</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection

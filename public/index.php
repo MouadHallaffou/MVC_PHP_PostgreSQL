@@ -1,8 +1,5 @@
 <?php
 require '../vendor/autoload.php';
-require '../app/config/Database.php';
+require_once '../app/config/Database.php';
 
-use App\Core\Router;
-
-$router = new Router();
-$router->handle();
+$route = require '../app/core/Router.php';

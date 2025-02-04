@@ -9,5 +9,6 @@ class Model {
     public function __construct() {
         $database = new Database();
         $this->pdo = $database->getConnection();
-    }
+    } 
+    
 }

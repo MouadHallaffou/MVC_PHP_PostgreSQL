@@ -5,27 +5,25 @@ use App\Core\Model;
 use PDO;
 
 class User extends Model {
-    public function __construct() {
-        parent::__construct();
-    }
-
+    // Ajouter un utilisateur
     public function addUser($username, $email, $password) {
         $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$username, $email, password_hash($password, PASSWORD_BCRYPT)]);
     }
 
+    // Récupère tous les utilisateurs
     public function getAllUsers() {
         try {
             $sql = "SELECT * FROM users";
             $stmt = $this->pdo->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
-            die("erreur:" . $e->getMessage());
+            die("Erreur: " . $e->getMessage());
         }
     }
-    
 
+    // Récupérer un utilisateur par son ID
     public function getUserById($id) {
         $sql = "SELECT * FROM users WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
@@ -33,6 +31,7 @@ class User extends Model {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Mettre à jour un utilisateur
     public function updateUser($id, $username, $email, $password = null) {
         if ($password) {
             $sql = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
@@ -45,10 +44,10 @@ class User extends Model {
         }
     }
 
+    // Supprimer un utilisateur
     public function deleteUser($id) {
         $sql = "DELETE FROM users WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$id]);
     }
-
 }

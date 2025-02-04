@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Core;
 
-class Controller{
-    public function render($view, $data=[]){
+class Controller {
+    public function render($view, $data = []) {
         extract($data);
-        include "../views/$view.php";
+        include "../app/views/$view"; // Correction du chemin
     }
 }

@@ -79,19 +79,3 @@
 Pour plus d'informations, référez-vous à la documentation dans ce fichier. N'hésitez pas à ouvrir une issue si vous rencontrez des problèmes.
 
 ```
-
-
-```
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^ index.php [QSA,L]
-</IfModule>
-
-# Désactiver l'exécution des fichiers PHP dans uploads
-<Directory "/uploads">
-    php_flag engine off
-</Directory>
-
-```

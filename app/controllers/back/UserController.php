@@ -1,10 +1,10 @@
 <?php
 namespace App\Controllers\Back;
 
-require_once __DIR__ . '../../../core/Controller.php';
 
 use App\Models\User;
 use App\Core\Controller;
+use App\Core\View;
 
 class UserController extends Controller {
     private $userModel;
@@ -26,7 +26,7 @@ class UserController extends Controller {
                 die("Erreur lors de l'ajout de l'utilisateur.");
             }
         } else {
-            $this->render('back/sign_in.twig'); 
+            view::render('back/sign_in'); 
         }
     }
 
@@ -36,8 +36,10 @@ class UserController extends Controller {
         exit();
     }
 
-    public function index() {
+    public function display() {
         $users = $this->userModel->getAllUsers();
-        $this->render('back/users.twig', ['users' => $users]);
+        View::render('users', ['users' => $users]);
     }
 }
+
+

@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+
 use App\Core\Model;
 use PDO;
 
@@ -51,3 +52,6 @@ class User extends Model {
         return $stmt->execute([$id]);
     }
 }
+
+// $db = new User();
+// var_dump($db->getAllUsers());
